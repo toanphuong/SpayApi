@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace SpayApi.Models
 {
     public class Account
-    {
+    {   
         public string AccountId { get; set; }
-
+        
         public string Password { get; set; }
 
         public string AccountType { get; set; }

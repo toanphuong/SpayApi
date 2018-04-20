@@ -10,25 +10,33 @@ namespace SpayApi.Controllers
 {
     public class AccountController : ApiController
     {
-        readonly Account[] accounts = new Account[]
-        {
-            new Account()
-            {
-                AccountId = Guid.NewGuid().ToString(),
-                MobileNumber = "0912176133",
-            },
+        private static readonly Account[] accounts = null;
 
-            new Account()
+        static AccountController()
+        {
+            if (accounts == null)
             {
-                AccountId = Guid.NewGuid().ToString(),
-                MobileNumber = "0982186599",
-            },
-            new Account()
-            {
-                AccountId = Guid.NewGuid().ToString(),
-                MobileNumber = "01882318886",
-            },
-        };
+                accounts = new Account[]
+                {
+                    new Account()
+                    {
+                        AccountId = Guid.NewGuid().ToString(),
+                        MobileNumber = "0912176133",
+                    },
+
+                    new Account()
+                    {
+                        AccountId = Guid.NewGuid().ToString(),
+                        MobileNumber = "0982186599",
+                    },
+                    new Account()
+                    {
+                        AccountId = Guid.NewGuid().ToString(),
+                        MobileNumber = "01882318886",
+                    },
+                };
+            }
+        }
 
         public IEnumerable<Account> GetAccounts()
         {
